@@ -22,19 +22,12 @@ if($weatherquery->count()>0){
 	$todo = $weatherquery->first();
 	if($todo->get($day)==false){
 		$ifsend=true;
-		$todo->set($day,true);
-		try {
-			$todo->save();
-		} catch (CloudException $ex) {}
+
 	}
 }else{
 	$ifsend=true;
 	$todo = new Object("Weather");
 	$todo->set("date", $weather["date"]);
-	$todo->set($day,true);
-	try {
-		$todo->save();
-	} catch (CloudException $ex) {}
 }
 if($ifsend){
 	$str=$str.$weather["text_day"]."转".$weather["text_night"]."，温度".$weather["low"]."℃-".$weather["high"]."℃"."，风力".$weather["wind_scale"]."级。";
@@ -50,10 +43,14 @@ if($ifsend){
 		$UserId_sum=rtrim($UserId_sum,"|");
 	}
 	var_dump($weixinsend->send_text($UserId_sum,"","","23",$str));
+	$todo->set($day,true);
+	try {
+		$todo->save();
+	} catch (CloudException $ex) {}
 }
 }
 		
-	class weixin {
+class weixin {
  private $appId;
  private $appSecret;
  public function __construct($appId, $appSecret) {
