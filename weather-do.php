@@ -8,14 +8,14 @@ use \LeanCloud\Exception;
 // 参数依次为 AppId, AppKey, MasterKey
 Client::initialize("EqNiLWx6KJ9O7XgvTcUNHFbo-gzGzoHsz", "ppaibnjf30sLOgrC1iMTmX21", "8yzIjkrTK4wmf8I527k1hKJg");
 date_default_timezone_set('Asia/Shanghai');
-$h=(int)date('h');
+$h=(int)date('H');
 if($h==7)$day="0";
 if($h==20)$day="1";
 if($h==7||$h==20){
 $str = file_get_contents("https://api.thinkpage.cn/v3/weather/daily.json?key=TZ0L1V14QX&location=31.033:121.449&language=zh-Hans&unit=c&start=0&days=5");  
 $arr = json_decode($str,TRUE);         
 $weather=$arr["results"][0]["daily"][(int)$day];
-if($day==0)$str="今日";else $str="明日";
+if($day=="0")$str="今日";else $str="明日";
 $weatherquery = new Query("Weather");
 $weatherquery->equalTo("date",$weather["date"]);
 if($weatherquery->count()>0){
