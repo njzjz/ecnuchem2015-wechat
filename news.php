@@ -40,7 +40,7 @@ for($i=0;$i<count($rss_array["ILINK"]);$i++){
 			} catch (CloudException $ex) {}
 		}
 	}else{
-		if($i>5)break;
+		if($i>10)break;
 	}
 }
 	
