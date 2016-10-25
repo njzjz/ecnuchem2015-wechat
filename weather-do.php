@@ -22,7 +22,6 @@ if($weatherquery->count()>0){
 	$todo = $weatherquery->first();
 	if($todo->get($day)==false){
 		$ifsend=true;
-
 	}
 }else{
 	$ifsend=true;
@@ -31,17 +30,17 @@ if($weatherquery->count()>0){
 }
 if($ifsend){
 	$str=$str.$weather["text_day"]."转".$weather["text_night"]."，温度".$weather["low"]."℃-".$weather["high"]."℃"."，风力".$weather["wind_scale"]."级。";
-	$weixinsend = new weixin("wxa5ff24073b976f78","vahQDHWRWPE8nm7oXuOvna1NIibRk_RcGzIM5TwZ6btRBTd2HnSLakCZVtvee-B5");//实例化
 	$query = new Query("WeatherFollow");
 	$query->equalTo("follow",true);
 	if($query->count()>0){
 		$todos = $query->find();
-		forEach($todos as $todo) {
-			$UserId = $todo->get("UserId");
+		forEach($todos as $todo2) {
+			$UserId = $todo2->get("UserId");
 			if($UserId!=null) $UserId_sum=$UserId."|".$UserId_sum;
 		}
 		$UserId_sum=rtrim($UserId_sum,"|");
 	}
+	$weixinsend = new weixin("wxa5ff24073b976f78","vahQDHWRWPE8nm7oXuOvna1NIibRk_RcGzIM5TwZ6btRBTd2HnSLakCZVtvee-B5");//实例化
 	var_dump($weixinsend->send_text($UserId_sum,"","","23",$str));
 	$todo->set($day,true);
 	try {

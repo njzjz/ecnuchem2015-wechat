@@ -15,7 +15,6 @@ Client::initialize("EqNiLWx6KJ9O7XgvTcUNHFbo-gzGzoHsz", "ppaibnjf30sLOgrC1iMTmX2
     //print_r($rss_array);
 	
 	$Newsquery = new Query("News");
-	$weixinsend = new weixin("wxa5ff24073b976f78","vahQDHWRWPE8nm7oXuOvna1NIibRk_RcGzIM5TwZ6btRBTd2HnSLakCZVtvee-B5");//实例化
 	$query = new Query("NewsFollow");
 	$query->equalTo("follow",true);
 	if($query->count()>0){
@@ -26,19 +25,20 @@ Client::initialize("EqNiLWx6KJ9O7XgvTcUNHFbo-gzGzoHsz", "ppaibnjf30sLOgrC1iMTmX2
 		}
 	$UserId_sum=rtrim($UserId_sum,"|");
 	}
-		$i=0;
 for($i=0;$i<count($rss_array["ILINK"]);$i++){
 	$url=$rss_array["ILINK"][$i];
 	$Newsquery->equalTo("url",$url);
 	if($Newsquery->count()==0){
 		$title=$rss_array["ITITLE"][$i];
 		$description=$rss_array["IDESCRIPTION"][$i];
-		var_dump($weixinsend->send_text($UserId_sum,"","","2",$title,$description,$url));
-		$todo = new Object("News");
-		$todo->set("url", $url);
-		try {
-			$todo->save();
-		} catch (CloudException $ex) {}
+		$weixinsend = new weixin("wxa5ff24073b976f78","vahQDHWRWPE8nm7oXuOvna1NIibRk_RcGzIM5TwZ6btRBTd2HnSLakCZVtvee-B5");//实例化
+		if($weixinsend->send_text($UserId_sum,"","","2",$title,$description,$url)==0){
+			$todo = new Object("News");
+			$todo->set("url", $url);
+			try {
+				$todo->save();
+			} catch (CloudException $ex) {}
+		}
 	}else{
 		if($i>5)break;
 	}
@@ -98,8 +98,8 @@ for($i=0;$i<count($rss_array["ILINK"]);$i++){
   public function err_echo($errcode){
     $err=json_decode($errcode,TRUE);
     if ($err['errcode']){
-      return $err['errmsg'];//错误消息
-      //return $err['errcode'];//错误代码
+      //return $err['errmsg'];//错误消息
+      return $err['errcode'];//错误代码
     }
     return false;
   }
