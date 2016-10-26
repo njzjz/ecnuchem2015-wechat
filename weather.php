@@ -17,18 +17,8 @@ $arr = json_decode($str,TRUE);
 $weather=$arr["results"][0]["daily"][(int)$day];
 if($day=="0")$str="今日";else $str="明日";
 $weatherquery = new Query("Weather");
-$weatherquery->equalTo("date",$weather["date"]);
-if($weatherquery->count()>0){
-	$todo = $weatherquery->first();
-	if($todo->get($day)==false){
-		$ifsend=true;
-	}
-}else{
-	$ifsend=true;
-	$todo = new Object("Weather");
-	$todo->set("date", $weather["date"]);
-}
-if($ifsend){
+$weatherquery->equalTo("date",$weather["date"]."-".$day);
+if($weatherquery->count()==0){
 	$str=$str.$weather["text_day"]."转".$weather["text_night"]."，温度".$weather["low"]."℃-".$weather["high"]."℃"."，风力".$weather["wind_scale"]."级。";
 	$query = new Query("WeatherFollow");
 	$query->equalTo("follow",true);
@@ -40,9 +30,11 @@ if($ifsend){
 		}
 		$UserId_sum=rtrim($UserId_sum,"|");
 	}
+	$todo = new Object("Weather");
+	$todo->set("date", $weather["date"]."-".$day);
 	$weixinsend = new weixin("wxa5ff24073b976f78","vahQDHWRWPE8nm7oXuOvna1NIibRk_RcGzIM5TwZ6btRBTd2HnSLakCZVtvee-B5");//实例化
 	var_dump($weixinsend->send_text($UserId_sum,"","","23",$str));
-	$todo->set($day,true);
+	$todo->set("weather",true);
 	try {
 		$todo->save();
 	} catch (CloudException $ex) {}
