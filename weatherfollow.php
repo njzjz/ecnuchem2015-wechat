@@ -4,7 +4,8 @@ use \LeanCloud\Client;
 use \LeanCloud\Object;
 use \LeanCloud\Query;
 use \LeanCloud\Exception;
-Client::initialize("EqNiLWx6KJ9O7XgvTcUNHFbo-gzGzoHsz", "ppaibnjf30sLOgrC1iMTmX21", "8yzIjkrTK4wmf8I527k1hKJg");
+Client::initialize("4ac583jtEBobLFrc8fkLhoqt-MdYXbMMI", "CUgkcPtQWH5oUjp6JM2w8Y1q", "mrci1ns6xGTfJ6NbARyTrGQg");
+Client::useRegion("US");
 if(isset($_COOKIE['UserId'])){
 	$UserId=$_COOKIE['UserId'];
 }elseif($_GET['code']!=""){
@@ -40,7 +41,7 @@ if(isset($_COOKIE['UserId'])){
 	   	setcookie('UserId',$UserId,time() + 259200);
      }else exit;
 }else {
-	header("Location:https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa5ff24073b976f78&redirect_uri=http%3a%2f%2fwx.njzjz.win%2fweatherfollow.php&response_type=code&scope=snsapi_base#wechat_redirect");
+	header("Location:https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa5ff24073b976f78&redirect_uri=https%3a%2f%2fchemapp.njzjz.win%2fwx%2fweatherfollow.php&response_type=code&scope=snsapi_base#wechat_redirect");
 	exit;
 }
 	$query = new Query("WeatherFollow");

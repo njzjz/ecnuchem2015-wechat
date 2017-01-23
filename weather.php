@@ -6,7 +6,8 @@ use \LeanCloud\Object;
 use \LeanCloud\Query;
 use \LeanCloud\Exception;
 // 参数依次为 AppId, AppKey, MasterKey
-Client::initialize("EqNiLWx6KJ9O7XgvTcUNHFbo-gzGzoHsz", "ppaibnjf30sLOgrC1iMTmX21", "8yzIjkrTK4wmf8I527k1hKJg");
+Client::initialize("4ac583jtEBobLFrc8fkLhoqt-MdYXbMMI", "CUgkcPtQWH5oUjp6JM2w8Y1q", "mrci1ns6xGTfJ6NbARyTrGQg");
+Client::useRegion("US");
 date_default_timezone_set('Asia/Shanghai');
 $h=(int)date('H');
 if($h==7)$day="0";

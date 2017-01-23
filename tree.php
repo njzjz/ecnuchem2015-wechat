@@ -8,8 +8,8 @@ use \LeanCloud\Object;
 use \LeanCloud\Query;
 use \LeanCloud\Exception;
 // 参数依次为 AppId, AppKey, MasterKey
-Client::initialize("EqNiLWx6KJ9O7XgvTcUNHFbo-gzGzoHsz", "ppaibnjf30sLOgrC1iMTmX21", "8yzIjkrTK4wmf8I527k1hKJg");
-
+Client::initialize("4ac583jtEBobLFrc8fkLhoqt-MdYXbMMI", "CUgkcPtQWH5oUjp6JM2w8Y1q", "mrci1ns6xGTfJ6NbARyTrGQg");
+Client::useRegion("US");
 // 假设企业号在公众平台上设置的参数如下
 $encodingAesKey = "oCkoXqstzOPTEVc3CLTJytxEc7Pvo7OA8c5hpE4Clsk";
 $token = "zengjinzhe";
@@ -123,7 +123,7 @@ if ($errCode == 0) {
 						<Content><![CDATA[%s]]></Content>
 						</xml>";        
 			$msgType="text";
-			$contentStr="成功发送！现在您可以<a href='http://wx.njzjz.win/treeview.php'>进入树洞</a>查看您的悄悄话了！";   
+			$contentStr="成功发送！现在您可以<a href='https://chemapp.njzjz.win/wx/treeview.php'>进入树洞</a>查看您的悄悄话了！";   
 			$sRespData = sprintf($textTpl, $corpId, $UserName, $sReqTimeStamp, $msgType, $contentStr);
 			$sEncryptMsg = ""; //xml格式的密文
 			$errCode = $wxcpt->EncryptMsg($sRespData, $sReqTimeStamp, $sReqNonce, $sEncryptMsg);
@@ -157,7 +157,7 @@ if ($errCode == 0) {
 						<Content><![CDATA[%s]]></Content>
 						</xml>";        
 			$msgType="text";
-			$contentStr="成功发送！现在您可以<a href='http://wx.njzjz.win/treeview.php'>进入树洞</a>查看您的悄悄话了！";   
+			$contentStr="成功发送！现在您可以<a href='https://chemapp.njzjz.win/wx/treeview.php'>进入树洞</a>查看您的悄悄话了！";   
 			$sRespData = sprintf($textTpl, $corpId, $UserName, $sReqTimeStamp, $msgType, $contentStr);
 			$sEncryptMsg = ""; //xml格式的密文
 			$errCode = $wxcpt->EncryptMsg($sRespData, $sReqTimeStamp, $sReqNonce, $sEncryptMsg);
