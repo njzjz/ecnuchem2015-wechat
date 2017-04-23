@@ -55,7 +55,10 @@ if($_GET['state']!=""){
 				$follow=true;
 			}
 		}
-	}else exit;
+	}else{
+		header("Location:login.php?url=".urlencode($_SERVER['REQUEST_URI']));
+		exit;
+	}
 }
 if($follow){
 	$button="取消";
