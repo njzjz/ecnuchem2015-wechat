@@ -30,6 +30,30 @@ class weixin {
     $output= $this->http_post_get("https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=$accessToken","$output");
     return $this->err_echo($output);
   }
+  public function send_news($touser,$toparty,$totag,$agentid,$title,$description,$url,$safe="0") {
+    /*
+    消息类型msgtype text文本发送
+    $touser 接收user 可选 |号隔开多个
+    $toparty 接收部门 可选 |号隔开多个
+    $totag 接收标签 可选 |号隔开多个
+    $agentid 应用id 整型
+    $text 发送内容 json
+    $safe 是否加密 可选 布尔值
+    */
+    $post_text=array(
+      'touser' => $touser, 
+      'toparty' => $toparty, 
+      'totag' => $totag, 
+      'msgtype' => "news", //默认消息类型文本
+      'agentid' => $agentid, 
+      'news' => array( 'articles'=>array(array('title'=>$title,'description'=>$description,'url'=>$url))), 
+      );
+    $accessToken = $this->getAccessToken();
+    $output= json_encode($post_text,JSON_UNESCAPED_UNICODE);
+	//echo $output;
+    $output= $this->http_post_get("https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=$accessToken","$output");
+    return $this->err_echo($output);
+  }
   private function getAccessToken() {
     //文本形式存储token，建议改造成适合自己的
     $data = json_decode(file_get_contents("access_token.json"));//获取口令

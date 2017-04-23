@@ -21,7 +21,7 @@ for($i=0;$i<count($rss_array["ILINK"]);$i++){
 		$title=$rss_array["ITITLE"][$i];
 		$description=$rss_array["IDESCRIPTION"][$i];
 		$weixinsend = new weixin("wxa5ff24073b976f78","vahQDHWRWPE8nm7oXuOvna1NIibRk_RcGzIM5TwZ6btRBTd2HnSLakCZVtvee-B5");//实例化
-		if($weixinsend->send_text("","","15","2",$title,$description,$url)==0){
+		if($weixinsend->send_news("","","15","2",$title,$description,$url)==0){
 			$todo = new Object("News");
 			$todo->set("url", $url);
 			try {
