@@ -1,4 +1,5 @@
 <?php
 $name="订阅天气预报";
 $tagid=13;
-require 'follow.php';
+header("Location:follow.php?name=".$name."&tagid=".$tagid);
+exit;

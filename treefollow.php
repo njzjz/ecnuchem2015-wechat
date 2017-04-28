@@ -1,4 +1,5 @@
 <?php
 $name="订阅树洞";
 $tagid=14;
-require 'follow.php';
+header("Location:follow.php?name=".$name."&tagid=".$tagid);
+exit;

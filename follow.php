@@ -9,6 +9,12 @@ if(isset($_COOKIE['UserId'])&&isset($_COOKIE['access_token'])){
 	header("Location:login.php?url=".urlencode($_SERVER['REQUEST_URI']));
 	exit;
 }
+if(isset($_GET['name'])){
+	$name=$_GET['name'];
+}
+if(isset($_GET['tagid'])){
+	$tagid=$_GET['tagid'];
+}
 if($_GET['state']!=""){
 	$follow=true;
 	$post_text=array(
@@ -72,7 +78,7 @@ if($follow){
 <? include "head.php";?>
 <title><?=$name;?></title>
 </head><body><section class="main-content">
-<div class="weui-cells weui-cells_form"><form method='post' action='?state=<?=$state?>'>
+<div class="weui-cells weui-cells_form"><form method='post' action='?state=<?=$state;?>&name=<?=$name;?>&tagid=<?=$tagid?>'>
 <div class="weui-cell"><div class="weui-cell__bd"><table><tr><td><input type="submit" value="<?=$button;?><?=$name;?>" class="weui-btn weui-btn_primary"></td></tr></table></form></div></div></div>
 </section>
 </body></html>
