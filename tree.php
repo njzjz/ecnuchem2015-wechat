@@ -1,16 +1,13 @@
 <?php
 
 include_once "WXBizMsgCrypt.php";
-require 'leancloud/src/autoload.php';
+require 'load.php';
 require 'wxsend.php';
 
 use \LeanCloud\Client;
 use \LeanCloud\Object;
 use \LeanCloud\Query;
 use \LeanCloud\Exception;
-// 参数依次为 AppId, AppKey, MasterKey
-Client::initialize("4ac583jtEBobLFrc8fkLhoqt-MdYXbMMI", "CUgkcPtQWH5oUjp6JM2w8Y1q", "mrci1ns6xGTfJ6NbARyTrGQg");
-Client::useRegion("US");
 // 假设企业号在公众平台上设置的参数如下
 $encodingAesKey = "oCkoXqstzOPTEVc3CLTJytxEc7Pvo7OA8c5hpE4Clsk";
 $token = "zengjinzhe";

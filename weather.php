@@ -1,12 +1,10 @@
 <?php  
-require 'leancloud/src/autoload.php';
+require 'load.php';
 require 'wxsend.php';
 use \LeanCloud\Client;
 use \LeanCloud\Object;
 use \LeanCloud\Query;
 use \LeanCloud\Exception;
-Client::initialize("4ac583jtEBobLFrc8fkLhoqt-MdYXbMMI", "CUgkcPtQWH5oUjp6JM2w8Y1q", "mrci1ns6xGTfJ6NbARyTrGQg");
-Client::useRegion("US");
 date_default_timezone_set('Asia/Shanghai');
 $h=(int)date('H');
 if($h==7)$day="0";

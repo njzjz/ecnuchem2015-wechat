@@ -1,14 +1,11 @@
 <?php
-require 'leancloud/src/autoload.php';
+require 'load.php';
 require 'wxsend.php';
 
 use \LeanCloud\Client;
 use \LeanCloud\Object;
 use \LeanCloud\Query;
 use \LeanCloud\Exception;
-// 参数依次为 AppId, AppKey, MasterKey
-Client::initialize("4ac583jtEBobLFrc8fkLhoqt-MdYXbMMI", "CUgkcPtQWH5oUjp6JM2w8Y1q", "mrci1ns6xGTfJ6NbARyTrGQg");
-Client::useRegion("US");
 if(isset($_COOKIE['UserId'])&&isset($_COOKIE['access_token'])){
 	$UserId=$_COOKIE['UserId'];
 	$access_token=$_COOKIE['access_token'];
