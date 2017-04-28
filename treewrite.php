@@ -2,7 +2,6 @@
 require 'load.php';
 require 'wxsend.php';
 
-use \LeanCloud\Client;
 use \LeanCloud\Object;
 use \LeanCloud\Query;
 use \LeanCloud\Exception;
@@ -14,13 +13,9 @@ if(isset($_COOKIE['UserId'])&&isset($_COOKIE['access_token'])){
 	exit;
 }
 ?>
-<html lang="zh-cn"><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /><title>写树洞</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="/stylesheets/normalize.css" media="screen">
-<link href='https://fonts.gmirror.org/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="/stylesheets/stylesheet.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/stylesheets/github-light.css" media="screen">
-<link rel="stylesheet" type="text/css" href="https://res.wx.qq.com/open/libs/weui/1.0.2/weui.min.css" media="screen">
+<html lang="zh-cn"><head>
+<?php include "head.php"?>
+<title>写树洞</title>
 </head><body><section class="main-content">
 <?php
 if($_POST['input']!=""){
@@ -48,7 +43,7 @@ if($_POST['input']!=""){
             <a href="treewrite.php" class="weui-dialog__btn weui-dialog__btn_primary">确定</a>
 			</div></div></div>';
 			$weixinsend = new weixin("wxa5ff24073b976f78","t3iDlzFHtqcslE1M-AfWbjoNapbShGjUdWaEzE779r8nj1GC4lZsntzrZvOQHEip");//实例化
-			var_dump($weixinsend->send_text("","","14","7","树洞又有新内容了：".$content));
+			$weixinsend->send_text("","","14","7","树洞有新内容了：".$content);
 		} catch (Exception $ex) {
 			//echo "Save object fail!";
 		}
