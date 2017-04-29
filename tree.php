@@ -121,7 +121,7 @@ if ($errCode == 0) {
 						<Content><![CDATA[%s]]></Content>
 						</xml>";        
 			$msgType="text";
-			$contentStr="成功发送！现在您可以<a href='https://chemapp.njzjz.win/wx/treeview.php'>进入树洞</a>查看您的悄悄话了！";   
+			$contentStr="成功发送！现在您可以<a href='http://njzjz.umi.pw/wx/treeview.html'>进入树洞</a>查看您的悄悄话了！";   
 			$sRespData = sprintf($textTpl, $corpId, $UserName, $sReqTimeStamp, $msgType, $contentStr);
 			$sEncryptMsg = ""; //xml格式的密文
 			$errCode = $wxcpt->EncryptMsg($sRespData, $sReqTimeStamp, $sReqNonce, $sEncryptMsg);
@@ -145,7 +145,7 @@ if ($errCode == 0) {
 						<Content><![CDATA[%s]]></Content>
 						</xml>";        
 			$msgType="text";
-			$contentStr="成功发送！现在您可以<a href='https://njzjz.coding.me/wx/treeview.html'>进入树洞</a>查看您的悄悄话了！";   
+			$contentStr="成功发送！现在您可以<a href='http://njzjz.umi.pw/wx/treeview.html'>进入树洞</a>查看您的悄悄话了！";   
 			$sRespData = sprintf($textTpl, $corpId, $UserName, $sReqTimeStamp, $msgType, $contentStr);
 			$sEncryptMsg = ""; //xml格式的密文
 			$errCode = $wxcpt->EncryptMsg($sRespData, $sReqTimeStamp, $sReqNonce, $sEncryptMsg);

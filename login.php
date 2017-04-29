@@ -39,6 +39,26 @@ if($_GET['code']!=""){
 	}
 	exit;
 }else {
-	header("Location:https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa5ff24073b976f78&redirect_uri=".urlencode("https://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'])."&response_type=code&scope=snsapi_base#wechat_redirect");
+	$urlinfo = parse_url($url);
+if(!empty($urlinfo))
+	{
+		$scheme = '';
+		if (isset($urlinfo['scheme']) && $urlinfo['scheme']=='http')
+		{
+			$scheme = 'http://';
+		}
+		elseif (isset($urlinfo['scheme']) && $urlinfo['scheme']=='https')
+		{
+			$scheme = 'https://';
+		}
+		$urlname = $scheme.$urlinfo['host'];
+		$urlport = $urlinfo['port'];
+	}
+
+	//注意 URL 一定要动态获取，不能hardcode
+	$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+
+	$url = $protocol.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+	header("Location:https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa5ff24073b976f78&redirect_uri=".urlencode($url)."&response_type=code&scope=snsapi_base#wechat_redirect");
 	exit;
 }
