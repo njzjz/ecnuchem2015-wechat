@@ -40,8 +40,7 @@ if($_GET['code']!=""){
 	exit;
 }else {
 	$urlinfo = parse_url($url);
-if(!empty($urlinfo))
-	{
+	if(!empty($urlinfo)){
 		$scheme = '';
 		if (isset($urlinfo['scheme']) && $urlinfo['scheme']=='http')
 		{
