@@ -12,6 +12,7 @@ mysql_select_db("wx", $con);
 $result = mysql_query("SELECT time FROM cron WHERE name='news' limit 1");
 $row = mysql_fetch_array($result);
 $last=$row['time'];
+if($last==0) exit;
 $now=$last;
 for($i=0;$i<count($rss_array["ILINK"]);$i++){
 	$time=strtotime($rss_array["IPUBDATE"][$i]);
