@@ -21,6 +21,20 @@ function fetch(time){
 		$("#loading").html("加载错误！")
 	});
 }
+function write(){
+	var TodoFolder = AV.Object.extend('TreeObject')
+	var todoFolder = new TodoFolder()
+	var content=$("#input").val()
+	todoFolder.set('content',content)
+	todoFolder.save().then(function (todo) {
+		$("#dialog2").show()
+		var createdAt = todo.createdAt
+		var html="<section class='treetable tree'>"+content+"<br/>--"+createdAt+"</section>"+$("#main").html()
+		$("#main").html(html)
+	}, function (error) {
+		$("#dialog3").show()
+	})
+}
 
 $(function(){
 	var time=new Date()
