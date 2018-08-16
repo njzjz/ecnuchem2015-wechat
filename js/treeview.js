@@ -14,7 +14,7 @@ function fetch(time){
 		$("#loading").hide()
 		$("#main").append(html)
 		$("#more").show()
-		$("#more").click(function(event) {
+		$("#more").unbind('click').click(function(event) {
 			fetch(createdAt)
 		});
 	}, function (error) {
