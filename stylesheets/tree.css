@@ -1,0 +1,23 @@
+.tree{
+	padding: 0px;
+	width:100%;
+	margin: 0px; 
+	border: none;
+	color: rgb(51, 51, 51);
+	font-size: 1em;
+	line-height: 1.4em;
+	word-break: break-all;
+	word-wrap: break-word; 
+	background-image: none; 
+	font-family: inherit;
+	color: rgb(112, 48, 160);
+	font-weight:bold;
+}
+.treetable{
+	margin: 0.8em 0; 
+	padding: 0.6em; 
+	border: 1px solid #c0c8d1;
+	border-radius: 0.3em; 
+	box-shadow: #aaa 0 0 0.6em;
+	background-color: #fafaef;
+}
