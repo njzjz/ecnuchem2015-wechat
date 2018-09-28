@@ -3,7 +3,7 @@ A Wechat Enterprise Account for 2015 Chemistry Class, East China Normal Universi
 
 **Author**: Jinzhe Zeng
 
-**Email**: njzjz@qq.com 10154601140@stu.ecnu.edu.cn
+**Email**: jzzeng@stu.ecnu.edu.cn
 
 ## Features
 * Anonymous chat
