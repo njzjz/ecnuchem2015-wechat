@@ -1,0 +1,3 @@
+[submodule "leancloud"]
+	path = leancloud
+	url = https://github.com/leancloud/php-sdk
